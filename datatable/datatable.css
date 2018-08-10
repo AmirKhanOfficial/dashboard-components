@@ -1,0 +1,242 @@
+.data-table{
+    box-sizing: border-box;
+}
+/*---------------- Table Start ----------------*/
+.data-table table{
+    padding: 10px 15px  15px 15px;
+    margin-top: 20px;
+    width: 100%;
+    -webkit-box-shadow: 0 0 3px 1px #ddd;
+    box-shadow: 0 0 3px 1px #ddd;
+    border-spacing: 0;
+}
+.data-table table th:first-child{
+    text-align: left;
+}
+.data-table table th{
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    height: 35px;
+}
+.data-table table thead th span{
+    display: inline-block;
+    vertical-align: middle;
+}
+.data-table table td:first-child{
+    text-align: left;
+}
+.data-table table td{
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+    text-align: center;
+    word-wrap: break-word;
+    position: relative;
+}
+table thead th span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 35px;
+}
+.data-table table tbody tr:nth-child(odd) {
+    background: #e9e3f9;
+}
+
+
+.data-table .head-icons {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    vertical-align: middle;
+    height: 35px;
+}
+.data-table .head-icons i.material-icons{
+    position: absolute;
+    right: 0;
+    color: #b8b8b8;
+}
+.data-table table thead th.sorted i.material-icons{
+    color: #916feb;
+}
+
+.data-table .head-icons i.material-icons.up{
+    top: 0;
+}
+.data-table .head-icons i.material-icons.down{
+    top: 8px;
+}
+.data-table .head-icons i.material-icons.active{
+    display: none;
+}
+/*---------------- Table End ----------------*/
+/*---------------- Table Head ---------------*/
+.data-table-header {
+    width: 100%;
+    padding: 5px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.data-table-header *{
+    box-sizing: border-box;
+}
+.data-table-header .search-query-box i.material-icons{
+    position: absolute;
+    right: 0;
+    border-left: 1px solid #cccccc;
+    padding: 0 4px;
+    line-height: 1.5;
+}
+.data-table-header .search-query-box{
+    float: left;
+    display: inline-block;
+    position: relative;
+}
+.data-table-header .search-query-box .search-input{
+    outline: none;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    font-size: 16px;
+    padding-right: 22px;
+}
+
+.data-table-header .search-query-box .search-input:hover, .data-table-header .search-query-box .search-input:focus{
+    box-shadow: 0 0 3px 0 #cccccc;
+}
+.data-table-header .total-count{
+    float: right;
+    display: inline-block;
+    text-align: right;
+}
+.data-table td.no-data{
+    text-align: center !important;
+    padding: 22px !important;
+    font-size: 16px;
+}
+/*---------------- Table End ---------------*/
+
+
+
+/*---------------- Pagination Start ----------------*/
+.data-table-pagination{
+    margin-top: 10px;
+    display: block;
+}
+.data-table-pagination .pagination {
+    display: inline;
+    width: 100%;
+}
+.data-table-pagination .pagination .disabled a {
+    cursor: not-allowed;
+}
+.data-table-pagination .pagination .disabled a:hover {
+    background-color:#fff !important;
+}
+.data-table-pagination .pagination li{
+    display: block;
+}
+.data-table-pagination .pagination li:first-child a{
+    border-radius: 5px 0 0 5px;
+}
+.data-table-pagination .pagination li:last-child a{
+    border-radius: 0 5px 5px 0;
+}
+.data-table-pagination .pagination li a {
+    color: #916feb;
+    float: left;
+    padding: 6px 12px;
+    text-decoration: none;
+    line-height: 1.42857143;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin: -1px;
+}
+.data-table-pagination .pagination li.active a{
+    background-color: #916feb;
+    color: white;
+    border: 1px solid #916feb;
+}
+.data-table-pagination .pagination li.active a:hover{
+    background-color: rgba(145,111,235,.8);
+    color: white;
+}
+.data-table-pagination .pagination li a:hover {
+    z-index: 2;
+    color: #7623eb;
+    background-color: #eee;
+    border-color: #ddd;
+}
+.per-page-select{
+    position: relative;
+    display: inline-block;
+    width: auto;
+}
+
+.per-page-select input{
+    outline: none;
+    border: 1px solid #cccccc;
+    font-size: 16px;
+    padding: 6.5px 12px;
+    margin-left: 10px;
+    border-radius: 3px;
+    max-width: 70px;
+    text-align: center;
+    box-sizing: border-box;
+
+}
+.per-page-select input:hover{
+    outline: none;
+    box-shadow: 0 0 5px 0 #cccccc;
+}
+.per-page-select input[type=number]::-webkit-inner-spin-button,
+.per-page-select input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.per-page-select input:focus{
+    box-shadow: 0 0 5px 0 #9a7aec;
+}
+.per-page-select label{
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    background-color: transparent;
+    left: 10px;
+    color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*z-index: 6;*/
+}
+.per-page-select ul{
+    margin: 0;
+    margin-top: 2px;
+    list-style: none;
+    width: 70px;
+    position: absolute;
+    left: 10px;
+    display: none;
+    padding: 0;
+}
+.per-page-select ul li{
+    margin: 0;
+    width: auto;
+    padding: 2px 5px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    text-align: center;
+}
+.per-page-select ul li:hover{
+    box-shadow: 0 0 5px 0 #cccccc;
+}
+/*---------------- Pagination End ----------------*/

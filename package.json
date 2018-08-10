@@ -1,0 +1,26 @@
+{
+  "name": "dashboard-components",
+  "version": "1.0.0",
+  "description": "XenonStack Inhouse Dashboard Components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.xenonstack.com/util/dashboard-components.git"
+  },
+  "keywords": [
+    "Dashboard",
+    "Reactjs",
+    "Components",
+    "npm"
+  ],
+  "author": "Amir Khan",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-js-pagination": "^2.1.0"
+  }
+}
