@@ -1,7 +1,7 @@
 {
   "name": "dashboard-components-testing",
   "version": "1.0.0",
-  "description": "XenonStack Inhouse Dashboard Components",
+  "description": "ReactJs Dashboard Components",
   "main": "build/index.js",
   "peerDependencies": {
     "react": "^16.4.2"
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://git.xenonstack.com/util/dashboard-components.git"
+    "url": "https://github.com/AmirKhanOfficial/dashboard-components.git"
   },
   "keywords": [
     "Dashboard",
@@ -23,7 +23,7 @@
   ],
   "author": {
     "name": "Amir Khan",
-    "email": "amir@xenondigilabs.com"
+    "email": "aamirkhan0308@gmail.com"
   },
   "license": "ISC",
   "dependencies": {
