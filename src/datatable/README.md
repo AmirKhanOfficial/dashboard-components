@@ -66,6 +66,10 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ```
 
+### Demo
+
+You can check the [demo](https://amirkhanofficial.github.io/dashboard-components) here.
+
 ### Params
 
 | Name | Type | Default | Description |
