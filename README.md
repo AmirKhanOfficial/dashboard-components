@@ -4,7 +4,7 @@ The component comes with built-in styles.
 ### Installation
 Install DataTable with npm:
 ```sh
-$ npm install --save @scope/dashboard-components
+$ npm install --save dashboard-components
 ```
 
 ### Usage
@@ -13,8 +13,7 @@ Very easy to use. Just provide props with total amount of things that you want t
 ```
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import DataTable from "dashboard-components/datatable";
-import 'dashboard-components/datatable/datatable.css';
+import {DataTable} from "dashboard-components";
 
 class App extends Component {
   constructor(props) {

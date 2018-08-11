@@ -1,10 +1,15 @@
 {
-  "name": "dashboard-components",
+  "name": "dashboard-components-testing",
   "version": "1.0.0",
   "description": "XenonStack Inhouse Dashboard Components",
-  "main": "index.js",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^16.4.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,11 +21,25 @@
     "Components",
     "npm"
   ],
-  "author": "Amir Khan",
+  "author": {
+    "name": "Amir Khan",
+    "email": "amir@xenondigilabs.com"
+  },
   "license": "ISC",
   "dependencies": {
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.4.2",
     "react-js-pagination": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   }
 }
