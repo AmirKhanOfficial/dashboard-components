@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-components",
+  "name": "dashboardcomponents",
   "version": "1.0.0",
   "description": "ReactJs Dashboard Components",
   "main": "build/index.js",
@@ -25,6 +25,7 @@
     "name": "Amir Khan",
     "email": "aamirkhan0308@gmail.com"
   },
+  "homepage": "https://amirkhanofficial.github.io/dashboard-components",
   "license": "ISC",
   "dependencies": {
     "react": "^16.4.2",
