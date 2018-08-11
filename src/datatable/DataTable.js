@@ -41,7 +41,7 @@ class DataTable extends Component {
             activePage: props.defaultActivePage || 1,
             perPage: props.perPage || 10,
             pageRangeDisplayed: props.pageRangeDisplayed || 3,
-            actionField: (props.actionField === false) ? false : true,
+            actionField: (props.actionField === true) ? true : false,
             isAsc: false,
             serialNumber: (props.serialNumber === false) ? false : true
         };
