@@ -93,9 +93,12 @@ This project uses [Google Material Icons](https://material.io/tools/icons/). You
 Read more in the [font portion](https://google.github.io/material-design-icons/#icon-font-for-the-web) of google developer guide.
 
 ### Pagination
+
 This component uses [react-js-pagination](https://www.npmjs.com/package/react-js-pagination).
+
 License
 ----
-Amir Khan - XenonStack
+MIT License
+Copyright (c) 2018 Amir Khan
 
 **Free Software, Hell Yeah!**
