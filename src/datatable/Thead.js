@@ -18,7 +18,7 @@ class Thead extends Component {
                 </th>
                 }
                 {this.props.sort && this.props.headerList.map((d, i) =>
-                    <th key={i} onClick={(e) => (d.sort?this.props.handleSortedBy(d.value, e):e)} style={d.style ? d.style: ''}>
+                    <th key={i} onClick={(e) => (d.sort?this.props.handleSortedBy(d.value, e):e)} style={d.style ? d.style: {}}>
                         <span>{d.label}</span>
                         {d.sort && <div className="head-icons">
                             <i className="material-icons up">arrow_drop_up</i>
@@ -32,7 +32,9 @@ class Thead extends Component {
                         <span>{d.label}</span>
                     </th>
                 )}
-                <th>Actions</th>
+                {this.props.actionField &&
+                    <th>Actions</th>
+                }
             </tr>
             </thead>
         )

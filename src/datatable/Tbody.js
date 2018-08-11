@@ -15,12 +15,14 @@ class Tbody extends Component {
                         {this.props.headerList.map((data, index) =>
                             <td key={index}>{d[data.value]}</td>
                         )}
+                        {this.props.actionField  &&
                         <td>
                             {this.props.actionsList.map((item, indx) =>
                                 <i key={indx} className="material-icons"
                                    onClick={() => item.handleAction(d)}>{item.icon}</i>
                             )}
                         </td>
+                        }
                     </tr>
                 ))) :
                 (this.props.pagination && ((this.props.sortedBy === '')) ?
@@ -33,12 +35,14 @@ class Tbody extends Component {
                                 {this.props.headerList.map((data, index) =>
                                     <td key={index}>{d[data.value]}</td>
                                 )}
+                                {this.props.actionField &&
                                 <td>
                                     {this.props.actionsList.map((item, indx) =>
                                         <i key={indx} className="material-icons"
                                            onClick={() => item.handleAction(d)}>{item.icon}</i>
                                     )}
                                 </td>
+                                }
                             </tr>
                         ))) :
                         (this.props.list.filter(this.props.filterBySearch(this.props.searchQuery)).map((d, i) => {
@@ -50,12 +54,14 @@ class Tbody extends Component {
                                 {this.props.headerList.map((data, index) =>
                                     <td key={index}>{d[data.value]}</td>
                                 )}
-                                <td>
-                                    {this.props.actionsList.map((item, indx) =>
-                                        <i key={indx} className="material-icons"
-                                           onClick={() => item.handleAction(d)}>{item.icon}</i>
-                                    )}
-                                </td>
+                                {this.props.actionField &&
+                                    <td>
+                                        {this.props.actionsList.map((item, indx) =>
+                                            <i key={indx} className="material-icons"
+                                               onClick={() => item.handleAction(d)}>{item.icon}</i>
+                                        )}
+                                    </td>
+                                }
                             </tr>
                         )))
                 )}

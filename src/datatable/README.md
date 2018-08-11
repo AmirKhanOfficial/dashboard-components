@@ -19,7 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data=[
+      data:[
       {name:'Bob', age:24, location: 'America'},
       {name:'Jack', age:32, location: 'Australia'},
       {name:'Daniel', age:45, location: 'Dubai'},

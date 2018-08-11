@@ -166,6 +166,7 @@ class DataTable extends Component {
             <Thead headerList={this.props.headerList}
             serialNumber={this.state.serialNumber}
             handleSortedBy={this.handleSortedBy.bind(this)}
+            actionField={this.state.actionField}
             sort={this.state.sort}/>
         <Tbody sortedBy={this.state.sortedBy}
             list={this.props.list}
@@ -174,6 +175,7 @@ class DataTable extends Component {
             activePage={this.state.activePage}
             perPage={this.state.perPage}
             isAsc={this.state.isAsc}
+            actionField={this.state.actionField}
             sortList={this.sortList}
             headerList={this.props.headerList}
             actionsList={this.props.actionsList}
