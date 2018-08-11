@@ -51,7 +51,8 @@ Thead.propTypes = {
     })).isRequired,
     sort: PropTypes.bool,
     handleSortedBy: PropTypes.func,
-    serialNumber: PropTypes.bool
+    serialNumber: PropTypes.bool,
+    actionField: PropTypes.bool
 };
 
 export default Thead;

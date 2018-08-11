@@ -96,7 +96,8 @@ Tbody.propTypes = {
     isAsc: PropTypes.bool,
     actionsList: PropTypes.array,
     noDataMessage: PropTypes.string,
-    pagination: PropTypes.bool
+    pagination: PropTypes.bool,
+    actionField: PropTypes.bool
 };
 
 export default Tbody;
