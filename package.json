@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-components-testing",
+  "name": "dashboard-components",
   "version": "1.0.0",
   "description": "ReactJs Dashboard Components",
   "main": "build/index.js",
