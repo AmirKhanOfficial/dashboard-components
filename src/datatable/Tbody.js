@@ -94,7 +94,10 @@ Tbody.propTypes = {
     perPage: PropTypes.number,
     sortList: PropTypes.func,
     isAsc: PropTypes.bool,
-    actionsList: PropTypes.array,
+    actionsList: PropTypes.arrayOf(PropTypes.shape({
+        icon: PropTypes.string,
+        handleAction: PropTypes.func
+    })),
     noDataMessage: PropTypes.string,
     pagination: PropTypes.bool,
     actionField: PropTypes.bool
