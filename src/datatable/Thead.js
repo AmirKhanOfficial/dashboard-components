@@ -33,7 +33,7 @@ class Thead extends Component {
                     </th>
                 )}
                 {this.props.actionField &&
-                    <th>Actions</th>
+                <th>Actions</th>
                 }
             </tr>
             </thead>
