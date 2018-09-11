@@ -19,7 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data=[
+      data:[
       {name:'Bob', age:24, location: 'America'},
       {name:'Jack', age:32, location: 'Australia'},
       {name:'Daniel', age:45, location: 'Dubai'},
@@ -66,6 +66,10 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ```
 
+### Demo
+
+You can check the [demo](https://amirkhanofficial.github.io/dashboard-components) here.
+
 ### Params
 
 | Name | Type | Default | Description |
@@ -73,7 +77,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 | showTotalValue | String |    | Total count of items which you are going to display
 | list | Array |    | **Required.** List of the Item which you are going to display
 | actionField | Boolean  | False | Adds Actions buttons field in table.
-| actionsList  | Array |    | Contains total actions your want to perform with Action Field(contains Icon(**Required.**) and EventHandler Function)
+| actionsList  | Array |    | Contains total actions your want to perform with Action Field(contains  icon, label (instead of icon), type (icon/link/button) and handleAction (EventHandler Function))
 | search | Boolean | True | Show Search Filter on Top of the Table
 | placeholder | String | Search here... | Placeholder of Search Input Field
 | pagination | Boolean | True | Show Pagination on the bottom of the Datatable
@@ -81,9 +85,10 @@ ReactDOM.render(<App />, document.getElementById("root"));
 | defaultActivePage | Number | 1 | Default Active Page
 | pageRangeDisplayed | Number | 3 | Range of pages in paginator, exclude navigation blocks (prev, next, first, last pages)
 | sort | Boolean | True | Sort by any of the list item
-| headerList | Array |   | Table Header List(Contains the fields you want to show in your datatable)
+| headerList | Array |   | Table Header List(Contains the fields you want to show in your datatable (label:field label **Required** , sort: true/false,value: value **Required**, style: custom css))
 | serialNumber | Boolean | True | Shows the Sno. field in header
 | noDataMessage | String | No Data Found. | When Data Table is empty this message will be displayed.
+| handleRowClick | Function |    | **Required**. Handles click event on table row.
 
 ### Using the icons
 This project uses [Google Material Icons](https://material.io/tools/icons/). You have to link the script in your html file to display the icons.
@@ -93,7 +98,6 @@ This project uses [Google Material Icons](https://material.io/tools/icons/). You
 Read more in the [font portion](https://google.github.io/material-design-icons/#icon-font-for-the-web) of google developer guide.
 
 ### Pagination
-
 This component uses [react-js-pagination](https://www.npmjs.com/package/react-js-pagination).
 
 License

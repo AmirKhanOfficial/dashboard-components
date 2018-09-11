@@ -6,17 +6,23 @@
 * showTotalValue            String                          Total count of items which you are going to display
 * list                      Array                           Required. List of the Item which you are going to display
 * actionField               Boolean         False           Adds Actions buttons field in table.
-* actionsList               Array                           Contains total actions your want to perform with Action Field(contains Icon and EventHandler Function)
+* actionsList               Array                           Contains total actions your want to perform with Action
+*                                                           Field(contains  Icon, label(instead of icon),type (icon/link/button)
+*                                                           and handleAction (EventHandler Function))
 * search                    Boolean         True            Show Search Filter on Top of the Table
 * placeholder               String          Search here...  Placeholder of Search Input Field
 * pagination                Boolean         True            Show Pagination on the bottom of the Datatable
 * perPage                   Number          10              Count of items per page
 * defaultActivePage         Number          1               Default Active Page
-* pageRangeDisplayed        Number          3               Range of pages in paginator, exclude navigation blocks (prev, next, first, last pages)
+* pageRangeDisplayed        Number          3               Range of pages in paginator, exclude navigation blocks
+*                                                           (prev, next, first, last pages)
 * sort                      Boolean         True            Sort by any of the list item
-* headerList                Array                           Table Header List(Contains the fields you want to show in your datatable)
+* headerList                Array                           Required. Table Header List(Contains the fields you want to
+*                                                           show in your datatable (label:field label, sort: true/false,
+*                                                           value: value, style: custom css))
 * serialNumber              Boolean         True            Shows the Sno. field in header
 * noDataMessage             String          No Data Found.  When Data Table is empty this message will be displayed.
+* handleRowClick            Function                        Required. Handles click event on table row.
 *
 * */
 
@@ -41,7 +47,7 @@ class DataTable extends Component {
             activePage: props.defaultActivePage || 1,
             perPage: props.perPage || 10,
             pageRangeDisplayed: props.pageRangeDisplayed || 3,
-            actionField: (props.actionField === false) ? false : true,
+            actionField: (props.actionField === true) ? true : false,
             isAsc: false,
             serialNumber: (props.serialNumber === false) ? false : true
         };
@@ -54,8 +60,13 @@ class DataTable extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({pagination: nextProps.pagination, search: nextProps.search, sort: nextProps.sort})
+    }
+
     handleOutsideClick(e) {
         if (document.querySelector('.per-page-select label').contains(e.target) || document.querySelector('.per-page-select input').contains(e.target)) {
+            return false;
         } else {
             document.querySelector('.per-page-select ul').style.display = 'none';
         }
@@ -138,7 +149,7 @@ class DataTable extends Component {
         if (e.target.value === '') {
             value = 0;
         }
-        this.changePerPage(parseInt(value))
+        this.changePerPage(parseInt(value, 10))
     }
 
     handleLabelClick() {
@@ -148,69 +159,73 @@ class DataTable extends Component {
     render() {
         return (
             <div className="data-table">
-            <div className="data-table-header">
-            {this.state.search &&
-            <div className="search-query-box">
-            <input className="search-input" placeholder={this.state.placeholder}
-        value={this.state.searchQuery} onChange={(e) => this.handleSearch(e.target.value)}/>
-        {this.state.searchQuery.length === 0 ? <i className="material-icons">search</i> :
-            <i className="material-icons" onClick={(e) => this.handleSearch('')}>close</i>}
-        </div>
-        }
-        {this.props.showTotalValue &&
-        <div className="total-count">
-            <strong>Total {this.props.showTotalValue} : </strong> {this.props.list.length}
-        </div>}
-        </div>
-        <table cellSpacing={0} cellPadding={0}>
-            <Thead headerList={this.props.headerList}
-            serialNumber={this.state.serialNumber}
-            handleSortedBy={this.handleSortedBy.bind(this)}
-            sort={this.state.sort}/>
-        <Tbody sortedBy={this.state.sortedBy}
-            list={this.props.list}
-            searchQuery={this.state.searchQuery}
-            filterBySearch={this.filterBySearch}
-            activePage={this.state.activePage}
-            perPage={this.state.perPage}
-            isAsc={this.state.isAsc}
-            sortList={this.sortList}
-            headerList={this.props.headerList}
-            actionsList={this.props.actionsList}
-            noDataMessage={this.props.noDataMessage}
-            pagination={this.state.pagination}
-            />
-            </table>
-            {this.state.pagination &&
-            < div className="data-table-pagination">
-                <Pagination
-                activePage={this.state.activePage}
-                itemsCountPerPage={this.state.perPage}
-                totalItemsCount={((this.state.sortedBy !== '') ?
-                    this.props.list.filter(this.filterBySearch(this.state.searchQuery)).sort((a, b) =>
-                        this.sortList(a, b, this.state.sortedBy, this.state.isAsc)).length :
-                    this.props.list.filter(this.filterBySearch(this.state.searchQuery)).length)}
-                pageRangeDisplayed={this.state.pageRangeDisplayed}
-                onChange={this.handlePageChange.bind(this)}
-                />
-                <div className="per-page-select"
-                style={{display: (this.props.list.length > 0 ? 'inline-block' : 'none')}}>
-            <input type="number" id="select-input" minLength={0}
-                value={this.state.perPage.length > 1 ? this.state.perPage.toString().replace(/^0+/, '') : this.state.perPage}
-                onChange={this.handleSelectChange.bind(this)}/>
-            <label htmlFor="select-input"
-                onClick={this.handleLabelClick.bind(this)}>{this.state.perPage}</label>
-            <ul>
-            <li onClick={(e) => this.changePerPage(15)}>15</li>
-                {this.props.list.length > 25 && <li onClick={(e) => this.changePerPage(25)}>25</li>}
-                    {this.props.list.length > 50 && <li onClick={(e) => this.changePerPage(50)}>50</li>}
-                    <li onClick={(e) => this.changePerPage(this.props.list.length)}>All</li>
-                    </ul>
-                    </div>
+                <div className="data-table-header">
+                    {this.state.search &&
+                    <div className="search-query-box">
+                        <input className="search-input" placeholder={this.state.placeholder}
+                               value={this.state.searchQuery} onChange={(e) => this.handleSearch(e.target.value)}/>
+                        {this.state.searchQuery.length === 0 ? <i className="material-icons">search</i> :
+                            <i className="material-icons" onClick={(e) => this.handleSearch('')}>close</i>}
                     </div>
                     }
+                    {this.props.showTotalValue &&
+                    <div className="total-count">
+                        <strong>Total {this.props.showTotalValue} : </strong> {this.props.list.length}
+                    </div>}
                 </div>
-                )
+                <table cellSpacing={0} cellPadding={0}>
+                    <Thead headerList={this.props.headerList}
+                           serialNumber={this.state.serialNumber}
+                           handleSortedBy={this.handleSortedBy.bind(this)}
+                           actionField={this.state.actionField}
+                           sort={this.state.sort}/>
+                    <Tbody sortedBy={this.state.sortedBy}
+                           list={this.props.list}
+                           serialNumber={this.state.serialNumber}
+                           searchQuery={this.state.searchQuery}
+                           filterBySearch={this.filterBySearch}
+                           activePage={this.state.activePage}
+                           perPage={this.state.perPage}
+                           isAsc={this.state.isAsc}
+                           handleRowClick={this.props.handleRowClick}
+                           actionField={this.state.actionField}
+                           sortList={this.sortList}
+                           headerList={this.props.headerList}
+                           actionsList={this.props.actionsList}
+                           noDataMessage={this.props.noDataMessage}
+                           pagination={this.state.pagination}
+                    />
+                </table>
+                {this.state.pagination &&
+                < div className="data-table-pagination">
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.perPage}
+                        totalItemsCount={((this.state.sortedBy !== '') ?
+                            this.props.list.filter(this.filterBySearch(this.state.searchQuery)).sort((a, b) =>
+                                this.sortList(a, b, this.state.sortedBy, this.state.isAsc)).length :
+                            this.props.list.filter(this.filterBySearch(this.state.searchQuery)).length)}
+                        pageRangeDisplayed={this.state.pageRangeDisplayed}
+                        onChange={this.handlePageChange.bind(this)}
+                    />
+                    <div className="per-page-select"
+                         style={{display: (this.props.list.length > 0 ? 'inline-block' : 'none')}}>
+                        <input type="number" id="select-input" minLength={0}
+                               value={this.state.perPage.length > 1 ? this.state.perPage.toString().replace(/^0+/, '') : this.state.perPage}
+                               onChange={this.handleSelectChange.bind(this)}/>
+                        <label htmlFor="select-input"
+                               onClick={this.handleLabelClick.bind(this)}>{this.state.perPage}</label>
+                        <ul>
+                            <li onClick={(e) => this.changePerPage(15)}>15</li>
+                            {this.props.list.length > 25 && <li onClick={(e) => this.changePerPage(25)}>25</li>}
+                            {this.props.list.length > 50 && <li onClick={(e) => this.changePerPage(50)}>50</li>}
+                            <li onClick={(e) => this.changePerPage(this.props.list.length)}>All</li>
+                        </ul>
+                    </div>
+                </div>
+                }
+            </div>
+        )
     }
 }
 
@@ -221,13 +236,21 @@ DataTable.propTypes = {
     defaultActivePage: PropTypes.number,
     pageRangeDisplayed: PropTypes.number,
     perPage: PropTypes.number,
-    headerList: PropTypes.array,
+    headerList: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        sort:PropTypes.bool,
+        value: PropTypes.string.isRequired,
+        style: PropTypes.object
+    })).isRequired,
     pagination: PropTypes.bool,
     actionField: PropTypes.bool,
     actionsList: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.string.isRequired,
+        icon: PropTypes.string,
+        label: PropTypes.string,
+        type: PropTypes.string,
         handleAction: PropTypes.func
     })),
+    handleRowClick: PropTypes.func.isRequired,
     sort: PropTypes.bool,
     search: PropTypes.bool,
     serialNumber: PropTypes.bool,
